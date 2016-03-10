@@ -1,0 +1,39 @@
+﻿/**Main style sheet*/
+
+body {
+}
+
+h1{
+    font-size: 2em;
+}
+
+div {
+  float: left;
+}
+div > div {
+  background: #2C3E50;
+}
+#algorithm_selector {
+  width: 100%;
+}
+#algorithm_selector > div {
+  width: 12%;
+  height: 12%;
+  padding-bottom: 12%;
+  margin: .25%;
+}
+
+#algorithm_selector > div:hover { 
+    background-color: yellow;
+}
+
+#test1{
+    display: none;
+}
+
+
+#inactive{
+
+    display: none;
+
+}
