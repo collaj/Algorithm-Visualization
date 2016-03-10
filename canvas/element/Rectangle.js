@@ -25,7 +25,7 @@ var Rectangle = function (coordinates, width, height, fill) {
  * @param {HTML5 Canvas object} canvas
  */
 Rectangle.prototype.draw = function (canvas) {
-    this.prototype.draw();
+    
     this.animations.applyAnimations();
 
     if (this.visible) {
