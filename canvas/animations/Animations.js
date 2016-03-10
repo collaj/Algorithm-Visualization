@@ -4,7 +4,7 @@
  * @member {Array} animations - holds all of the animations
  */
 var Animations = function () {
-    this.animations = [];
+    this.animations = new SortedList();
     
 };
 
@@ -13,7 +13,7 @@ var Animations = function () {
  * @param {Animation} animation - the animation to add
  */
 Animations.prototype.addAnimation = function (animation) {
-    this.animations.push(animation);
+    this.animations.add(animation);
 };
 
 /**
@@ -21,16 +21,15 @@ Animations.prototype.addAnimation = function (animation) {
  * @param {Animation} animation - the animation to remove
  */
 Animations.prototype.removeAnimation = function (animation) {
-    var index = this.animations.indexOf(animation);
-    this.animations.splice(index, 1);
+    this.animations.remove(animation);
 };
 
 /**
  * Applies the aniamtions to the element
  */
 Animations.prototype.applyAnimations = function () {
-    for (var i = 0; i < this.animations.length; i++) {
-        var animation = this.animations[i];
+    for (var i = 0; i < this.animations.length(); i++) {
+        var animation = this.animations.get(i);
 
         if (Engine.now >= animation.start) {
             if (!animation.hasStarted) {
@@ -44,6 +43,10 @@ Animations.prototype.applyAnimations = function () {
 
         if (Engine.now >= animation.start + animation.duration) {
             this.removeAnimation(animation);
+        }
+
+        if (!animation.hasStarted) {
+            break;
         }
     }
 };

@@ -58,3 +58,8 @@ ColorAnimation.prototype.startAnimation = function () {
     this.deltaOpacity = this.endColor.opacity - this.startColor.opacity;
 
 };
+
+
+ColorAnimation.prototype.compareTo = function (object) {
+    return this.start - object.start;
+}

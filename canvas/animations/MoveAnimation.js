@@ -19,9 +19,6 @@
 
 MoveAnimation.prototype.draw = function () {
 
-    console.log(this.x);
-    console.log(this.y);
-
     var progress = (Engine.now - this.start) / this.duration;
     if (progress > 1) {
         progress = 1;
@@ -39,4 +36,8 @@ MoveAnimation.prototype.startAnimation = function () {
 
     this.deltaX = this.destination.x - this.x;
     this.deltaY = this.destination.y - this.y;
-}
+};
+
+MoveAnimation.prototype.compareTo = function (object) {
+    return this.start - object.start;
+};
