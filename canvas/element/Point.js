@@ -10,7 +10,7 @@ var Point = function (x, y) {
     this.visible = true;
     this.color = new Color();
     this.coordinates = new Coordinate2D(x, y);
-    this.animations = new Animations();
+    this.animations = new AnimationManager();
 };
 
 /**

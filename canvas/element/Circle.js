@@ -14,7 +14,7 @@ var Circle = function (origin, radius) {
     this.coordinates = new Coordinate2D(origin.x, origin.y);
     this.radius = radius;
     this.fill = true;
-    this.animations = new Animations();
+    this.animations = new AnimationManager();
 };
 
 /**
