@@ -17,7 +17,7 @@ var Rectangle = function (coordinates, width, height, fill) {
     this.height = height;
     this.fill = (fill !== undefined) ? fill : true;
 
-    this.animations = new Animations();
+    this.animations = new AnimationManager();
 };
 
 /**

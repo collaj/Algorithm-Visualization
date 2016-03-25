@@ -3,7 +3,7 @@
  * @constructor
  * @member {Array} animations - holds all of the animations
  */
-var Animations = function () {
+var AnimationManager = function () {
     this.animations = new SortedList();
     
 };
@@ -12,7 +12,7 @@ var Animations = function () {
  * Adds an animation to the object
  * @param {Animation} animation - the animation to add
  */
-Animations.prototype.addAnimation = function (animation) {
+AnimationManager.prototype.addAnimation = function (animation) {
     this.animations.add(animation);
 };
 
@@ -20,14 +20,14 @@ Animations.prototype.addAnimation = function (animation) {
  * Removes an animation from the object
  * @param {Animation} animation - the animation to remove
  */
-Animations.prototype.removeAnimation = function (animation) {
+AnimationManager.prototype.removeAnimation = function (animation) {
     this.animations.remove(animation);
 };
 
 /**
  * Applies the aniamtions to the element
  */
-Animations.prototype.applyAnimations = function () {
+AnimationManager.prototype.applyAnimations = function () {
     for (var i = 0; i < this.animations.length(); i++) {
         var animation = this.animations.get(i);
 
