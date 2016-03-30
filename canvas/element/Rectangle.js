@@ -9,36 +9,31 @@
  * @member {boolean} fill - is element filled
  * @member {Animations} animations - animations for the Rectangle
  */
-var Rectangle = function (coordinates, width, height, fill) {
-    this.visible = true;
-    this.color = new Color();
-    this.coordinates = coordinates;
+var Rectangle = function (coordinates, width, height, color, fill, visible) {
+    Element.call(this, coordinates, color, visible);
+
     this.width = width;
     this.height = height;
     this.fill = (fill !== undefined) ? fill : true;
-
-    this.animations = new AnimationManager();
 };
+
+
+// inheritance
+extend(Element, Rectangle);
 
 /**
  * Draws the rectangle on the canvas
  * @param {HTML5 Canvas object} canvas
  */
 Rectangle.prototype.draw = function (canvas) {
-    
-    this.animations.applyAnimations();
-
-    if (this.visible) {
-        this.color.draw(canvas);
-        var ctx = canvas.getContext("2d");
-        ctx.beginPath();
+    var context = Element.prototype.draw.call(this, canvas);
+    if (context !== undefined) {
+        context.beginPath();
+        context.rect(this.coordinates.x, this.coordinates.y, this.width, this.height);
+        context.closePath();
         if (this.fill) {
-            ctx.fillRect(this.coordinates.x, this.coordinates.y, this.width, this.height);
+            context.fill();
         }
-        else {
-            ctx.rect(this.coordinates.x, this.coordinates.y, this.width, this.height);
-        }
-        ctx.closePath();
-        ctx.stroke();
+        context.stroke();
     }
 };

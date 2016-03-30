@@ -6,25 +6,21 @@
  * @member {Coordinate2D} coordinates - coordinates of the point
  * @member {Animations} animations - animations for the point
  */
-var Point = function (x, y) {
-    this.visible = true;
-    this.color = new Color();
-    this.coordinates = new Coordinate2D(x, y);
-    this.animations = new AnimationManager();
+var Point = function (coordinates, color, visible) {
+    Element.call(this, coordinates, color, visible);
 };
+
+// inheritance
+extend(Element, Point);
 
 /**
  * Graphically drawing the point on the canvas
  * @param {HTML5 Canvas object} canvas
  */
 Point.prototype.draw = function (canvas) {
-    this.animations.applyAnimations();
-
-    if (this.visible) {
-        this.color.draw(canvas);
-
-        var ctx = canvas.getContext("2d");
-        ctx.fillRect(this.coordinates.x, this.coordinates.y, 2, 2);
-        ctx.stroke();
+    var context = Element.prototype.draw.call(this, canvas);
+    if (context !== undefined) {
+        context.fillRect(this.coordinates.x, this.coordinates.y, 2, 2);
+        context.stroke();
     }
 };

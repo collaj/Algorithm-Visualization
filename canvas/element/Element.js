@@ -3,9 +3,11 @@
  * or an group of drawable objects.
  * @constructor
  */
-var Element = function () {
-    //To be overridden when extended by concrete element implementations.
-    throw new Error("Cannot instantiate this abstract class.");
+var Element = function (coordinates, color, visible) {
+    this.visible = (visible !== undefined) ? visible : true;
+    this.color = (color !== undefined) ? color : new Color();
+    this.coordinates = coordinates;
+    this.animations = new AnimationManager();
 };
 
 /**
@@ -14,5 +16,14 @@ var Element = function () {
  * @param {HTML5 Canvas object} canvas
  */
 Element.prototype.draw = function (canvas) {
-    throw new Error('must be implemented by subclass!');
+    this.animations.applyAnimations();
+
+    if (!this.visible) {
+        return undefined;
+    }
+    else {
+        var context = canvas.getContext("2d");
+        this.color.draw(context);
+        return context;
+    }
 };

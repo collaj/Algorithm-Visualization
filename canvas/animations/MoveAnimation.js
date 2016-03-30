@@ -1,43 +1,54 @@
-﻿var MoveAnimation = function (start, duration, element, destination) {
-    this.start = start;
-    this.duration = duration;
+﻿/**
+ * Animation that moves an element
+ * 
+ * @constructor - inherits from Animation
+ * @member - inherit from Animation
+ * @member {Coordinate2D} destination - the coordinates of the destination
+ * @member {int} startX - x coordinate of where the element started
+ * @member {int} startY - y coordinate of where the element started
+ * @member {int} deltaX - x coordinate delta change
+ * @member {int} deltaY - y coordinate delta change
+ * 
+ * @param {int} start - start time of the animation
+ * @param {int} duration - the length of the animation
+ * @param {Element} element - the element that the animation is for
+ */
+var MoveAnimation = function (start, duration, element, destination) {
+    // superconstructor call
+    Animation.call(this, start, duration, element);
 
-    this.element = element;
     this.destination = destination;
 
-    this.hasStarted = false;
-
-    this.x = this.element.coordinates.x;
-    this.y = this.element.coordinates.y;
+    this.startX = this.element.coordinates.x;
+    this.startY = this.element.coordinates.y;
     
-
-    this.deltaX = destination.x - this.x;
-    this.deltaY = destination.y - this.y;
-    
+    this.deltaX = destination.x - this.startX;
+    this.deltaY = destination.y - this.startY;
 };
 
+// inheritance
+extend(Animation, MoveAnimation);
 
+/**
+ * Implements Animation draw method
+ */
 MoveAnimation.prototype.draw = function () {
+    var progress = this.percentComplete();
 
-    var progress = (Engine.now - this.start) / this.duration;
-    if (progress > 1) {
-        progress = 1;
-    }
-
-    this.element.coordinates.x = this.x + Math.floor(this.deltaX * progress);
-    this.element.coordinates.y = this.y + Math.floor(this.deltaY * progress);
-
+    this.element.coordinates.x = this.startX + (this.deltaX * progress);
+    this.element.coordinates.y = this.startY + (this.deltaY * progress);
 };
 
+/**
+ * Overrides Animations start. Calls Base class start method.
+ */
 MoveAnimation.prototype.startAnimation = function () {
-    this.x = this.element.coordinates.x;
-    this.y = this.element.coordinates.y;
+    // super method call
+    Animation.prototype.startAnimation.call(this);
 
+    this.startX = this.element.coordinates.x;
+    this.startY = this.element.coordinates.y;
 
-    this.deltaX = this.destination.x - this.x;
-    this.deltaY = this.destination.y - this.y;
-};
-
-MoveAnimation.prototype.compareTo = function (object) {
-    return this.start - object.start;
+    this.deltaX = this.destination.x - this.startX;
+    this.deltaY = this.destination.y - this.startY;
 };

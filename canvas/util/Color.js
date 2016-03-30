@@ -17,12 +17,9 @@ var Color = function (red, green, blue, opacity) {
  * Applies the color of an object to the canvas
  * @param {HTML5 Canvas object} canvas
  */
-Color.prototype.draw = function (canvas) {
-    var ctx = canvas.getContext("2d");
-
+Color.prototype.draw = function (ctx) {
     ctx.strokeStyle = "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.opacity + ")";
     ctx.fillStyle = "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.opacity + ")";
-    
 };
 
 /**

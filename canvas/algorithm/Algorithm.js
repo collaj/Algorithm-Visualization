@@ -1,28 +1,50 @@
 ﻿/**
- * This is an abstract class that represents an implementation of an algorithm animation page. 
- * This is the only class that is attached to the HTML.
- * @constructor
+ * Abstract class that represents an implementation of an algorithm animation page.
+ * 
+ * @member {Array} objects - the canvas objects the algorithm has
  */
 var Algorithm = function () {
-    
-    //To be overridden when extended by concrete algorithm implementations.
-    throw new Error("Cannot instantiate this abstract class.");
+    this.objects = [];
 };
 
 /**
- * Abstract function to be overridden by concrete algorithm implementations.
- * @abstract
- * @param {HTML Canvas object}
+ * Draws the elements on the canvas. Should be overridden by subclass when adding functionality.
+ * 
+ * @param {HTML5 Canvas} canvas
  */
 Algorithm.prototype.draw = function (canvas) {
-    throw new Error('must be implemented by subclass!');
+    for (var i = 0; i < this.objects.length; i++) {
+        var element = this.objects[i];
+        element.draw(canvas);
+    }
 };
 
 /**
- * Abstract function to be overridden by concreate algorithm implementations.
- * loads HTML onto the DOM
- * @abstract
+ * Abstract function that must be overriden by subclass.
  */
 Algorithm.prototype.load = function () {
-    throw new Error('must be implemented by subclass!');
+    throw new Error("load function not implemented");
+};
+
+/**
+ * Adds objects to the algorithm.
+ * 
+ * @param elements - any number of elements to be added to the algorithm
+ */
+Algorithm.prototype.addObjects = function (...elements) {
+    for (var i = 0; i < elements.length; i++) {
+        this.objects.push(elements[i]);
+    }
+};
+
+/**
+ * Removes objects to the algorithm.
+ * 
+ * @param elements - any number of elements to be removed from the algorithm
+ */
+Algorithm.prototype.removeObjects = function (...elements) {
+    for (var i = 0; i < elements.length; i++) {
+        var x = this.elements.indexOf(element);
+        this.elements.splice(x, 1);
+    }
 };

@@ -89,3 +89,17 @@ Engine.loadAlgorithm = function (newAlgorithm) {
     Engine.algorithm = newAlgorithm;
     Engine.algorithm.load();
 };
+
+
+/**
+ * Function to handle inheritance
+ */
+function extend(parent, child) {
+    var parentPrototype = child.prototype;
+    child.prototype = Object.create(parent.prototype);
+    for (var key in parentPrototype) {
+        child.prototype[key] = parentPrototype[key];
+    }
+    
+    child.prototype.constructor = child;
+}

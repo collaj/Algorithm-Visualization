@@ -1,7 +1,8 @@
 ﻿/**
  * Holds and handles animations for an element
+ * 
  * @constructor
- * @member {Array} animations - holds all of the animations
+ * @member {SortedList} animations - holds all of the animations in acending order
  */
 var AnimationManager = function () {
     this.animations = new SortedList();
@@ -10,6 +11,7 @@ var AnimationManager = function () {
 
 /**
  * Adds an animation to the object
+ * 
  * @param {Animation} animation - the animation to add
  */
 AnimationManager.prototype.addAnimation = function (animation) {
@@ -18,6 +20,7 @@ AnimationManager.prototype.addAnimation = function (animation) {
 
 /**
  * Removes an animation from the object
+ * 
  * @param {Animation} animation - the animation to remove
  */
 AnimationManager.prototype.removeAnimation = function (animation) {
@@ -33,11 +36,8 @@ AnimationManager.prototype.applyAnimations = function () {
 
         if (Engine.now >= animation.start) {
             if (!animation.hasStarted) {
-
                 animation.startAnimation();
-                animation.hasStarted = true; 
             }
-
             animation.draw();
         }
 

@@ -8,34 +8,33 @@
  * @member {boolean} fill - is element filled
  * @member {Animations} animations - animations for the Circle
  */
-var Circle = function (origin, radius) {
-    this.visible = true;
-    this.color = new Color();
-    this.coordinates = new Coordinate2D(origin.x, origin.y);
+var Circle = function (coordinates, radius, color, fill, visible) {
+    Element.call(this, coordinates, color, visible);
+
     this.radius = radius;
-    this.fill = true;
-    this.animations = new AnimationManager();
+    this.fill = (fill !== undefined) ? fill : true;
 };
+
+
+// inheritance
+extend(Element, Circle);
 
 /**
  * Draws the circle on the canvas
  * @param {HTML5 Canvas object} canvas
  */
 Circle.prototype.draw = function (canvas) {
-    this.animations.applyAnimations();
+    var context = Element.prototype.draw.call(this, canvas);
+    if (context !== undefined) {
+        context.beginPath();
 
-    if (this.visible) {
-        this.color.draw(canvas);
-        var ctx = canvas.getContext("2d");
-        ctx.beginPath();
-
-        var center = this.getCenterPoint();
-        ctx.arc(center.x, center.y, this.radius, 0, Math.PI*2);
+        var center = this.centerPoint();
+        context.arc(center.x, center.y, this.radius, 0, Math.PI * 2);
+        context.closePath();
         if (this.fill) {
-            ctx.fill();
+            context.fill();
         }
-        ctx.closePath();
-        ctx.stroke();
+        context.stroke();
     }
 };
 
@@ -43,6 +42,6 @@ Circle.prototype.draw = function (canvas) {
  * Gets the coordinates of the center point of the circle
  * @return {Coordinate2D} - coordinates of the center point
  */
-Circle.prototype.getCenterPoint = function () {
+Circle.prototype.centerPoint = function () {
     return new Coordinate2D(this.coordinates.x + this.radius, this.coordinates.y + this.radius);
 };
