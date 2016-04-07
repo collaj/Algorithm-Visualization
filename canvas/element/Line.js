@@ -13,8 +13,10 @@ var Line = function (point1, point2, color, visible) {
                                 Math.min(point1.y, point2.y));
     Element.call(this, coor, color, visible);
     
-    this.point1 = point1;
-    this.point2 = point2;
+    this.delta1x = Math.abs(point1.x - coor.x);
+    this.delta1y = Math.abs(point1.y - coor.y);
+    this.delta2x = Math.abs(point2.x - coor.x);
+    this.delta2y = Math.abs(point2.y - coor.y);
 };
 
 // inheritance
@@ -29,8 +31,8 @@ Line.prototype.draw = function (canvas) {
     var context = Element.prototype.draw.call(this, canvas);
     if (context !== undefined) {
         context.beginPath();
-        context.moveTo(this.point1.x, this.point1.y);
-        context.lineTo(this.point2.x, this.point2.y);
+        context.moveTo(this.coordinates.x + this.delta1x, this.coordinates.y + this.delta1y);
+        context.lineTo(this.coordinates.x + this.delta2x, this.coordinates.y + this.delta2y);
         context.closePath();
         context.stroke();
     }
