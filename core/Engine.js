@@ -86,6 +86,8 @@ Engine.setDrawDelay = function (delay) {
  * @param {Algorithm} newAlgorithm - The new Algorithm object that will be loaded onto the DOM.
  */
 Engine.loadAlgorithm = function (newAlgorithm) {
+    console.log("algorithm: " + newAlgorithm);
+    
     Engine.algorithm = newAlgorithm;
     Engine.algorithm.load();
 };

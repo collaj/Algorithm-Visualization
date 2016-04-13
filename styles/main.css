@@ -1,39 +1,108 @@
 ﻿/**Main style sheet*/
-
 body {
+	font-family: Calibri;
+	width:100%;
+	margin:0;
 }
-
 h1{
-    font-size: 2em;
+	font-size:4em;
+	font-weight: 100;
+	text-transform: uppercase;
+	color: #333;
+	text-shadow: 0px 3px 3px #222;
 }
 
-div {
-  float: left;
-}
-div > div {
-  background: #2C3E50;
-}
-#algorithm_selector {
-  width: 100%;
-}
-#algorithm_selector > div {
-  width: 12%;
-  height: 12%;
-  padding-bottom: 12%;
-  margin: .25%;
+/*Input Styles*/
+
+button, input, label {
+	border: none;
+	font-size: 1em;
+	background-color: #333;
+	color: #f4f4f4;
 }
 
-#algorithm_selector > div:hover { 
-    background-color: yellow;
+button {
+	padding: .5em;
+	min-width: 100px;
 }
 
-#test1{
-    display: none;
+input, label {
+	padding: .25em;
 }
 
+
+	button:hover, input:hover, label:hover {
+		color: #ffffff;
+		background-color: #444;
+		cursor:pointer;
+	}
+
+input[type="range"]{
+	margin:0;
+	padding:0;
+}
+
+
+/*List Styles*/
+.horizontal_list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+	.horizontal_list li {
+		padding-right: 1em;
+		display: inline;
+	}
+
+	.horizontal_list:last-child {
+		padding-right: 0;
+	}
+
+
+/**TOP PANEL*/
+header{
+	margin: 0;
+	padding: 0;
+
+	
+}
+
+/**MAIN*/
+section{
+	margin: 0;
+	padding: 0;
+	height:100%;
+
+
+	
+}
+
+/**BOTTOM PANEL*/
+footer{
+	margin: 0;
+	padding: 0;
+
+
+	
+}
 
 #inactive{
 
-    display: none;
+	display: none;
 
+}
+ 
+
+
+#canvas{
+
+	position: absolute;
+
+
+}
+#algorithm_selector {
+  width: 100%;
+  height:100%;
+  text-align:center;
 }
