@@ -1,6 +1,5 @@
 ﻿var SortedList = function (...elements) {
     this.elements = elements;
-
 };
 
 
@@ -34,4 +33,8 @@ SortedList.prototype.get = function (index) {
 
 SortedList.prototype.length = function () {
     return this.elements.length;
+};
+
+SortedList.prototype.isEmpty = function () {
+    return this.elements === undefined || this.elements.length === 0;
 };

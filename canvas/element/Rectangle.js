@@ -12,8 +12,8 @@
 var Rectangle = function (coordinates, width, height, color, fill, visible) {
     Element.call(this, coordinates, color, visible);
 
-    this.width = width;
-    this.height = height;
+    this.width = (width !== undefined) ? width : 0;
+    this.height = (height !== undefined) ? height : 0;
     this.fill = (fill !== undefined) ? fill : true;
 };
 

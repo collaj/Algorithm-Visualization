@@ -15,11 +15,11 @@ var Color = function (red, green, blue, opacity) {
 
 /**
  * Applies the color of an object to the canvas
- * @param {HTML5 Canvas object} canvas
+ * @param {HTML5 Canvas Context} ctx
  */
 Color.prototype.draw = function (ctx) {
-    ctx.strokeStyle = "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.opacity + ")";
-    ctx.fillStyle = "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.opacity + ")";
+    ctx.strokeStyle = this.toString();
+    ctx.fillStyle = this.toString();
 };
 
 /**
@@ -77,6 +77,11 @@ Color.prototype.clone = function () {
     return new Color(this.red, this.green, this.blue, this.opacity);
 };
 
+
+Color.prototype.toString = function () {
+    return "rgba(" + this.red + ", " + this.green + ", " + this.blue + ", " + this.opacity + ")";
+};
+
 /**
  * Returns a truly random color
  * @return {Color} - a random color
@@ -92,7 +97,7 @@ Color.random = function () {
  * Object used to hold all of the pre-defined colors found here:
  * http://www.w3schools.com/colors/colors_names.asp
  * 
- * Note: Do NOT modify this object, unless W3 Schools changes this list of pre-defined colors
+ * Note: Avoid modifying this object.
  */
 var COLOR = {
     aliceblue: "#F0F8FF",

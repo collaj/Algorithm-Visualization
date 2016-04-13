@@ -7,17 +7,16 @@ var Element = function (coordinates, color, visible) {
     this.visible = (visible !== undefined) ? visible : true;
     this.color = (color !== undefined) ? color : new Color();
     this.coordinates = coordinates;
-    this.animations = new AnimationManager();
 };
 
 /**
- * Abstract function draws the object on the canvas
- * @abstract
+ * Sub classes should override this function and call it inside their
+ * draw function.
+ * 
  * @param {HTML5 Canvas object} canvas
+ * @returns {HTML5 Canvas Context} - context of the element
  */
 Element.prototype.draw = function (canvas) {
-    this.animations.applyAnimations();
-
     if (!this.visible) {
         return undefined;
     }

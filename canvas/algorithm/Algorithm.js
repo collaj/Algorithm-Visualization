@@ -5,14 +5,17 @@
  */
 var Algorithm = function () {
     this.objects = [];
+    this.animations = new AnimationManager();
 };
 
 /**
- * Draws the elements on the canvas. Should be overridden by subclass when adding functionality.
+ * Draws the elements on the canvas. Can be overridden by subclass to add functionality.
  * 
  * @param {HTML5 Canvas} canvas
  */
 Algorithm.prototype.draw = function (canvas) {
+    this.animations.applyAnimations();
+
     for (var i = 0; i < this.objects.length; i++) {
         var element = this.objects[i];
         element.draw(canvas);

@@ -12,15 +12,15 @@
  * @member {int} last - milliseconds from engine start to last loop
  * @member {int} now - milliseconds from engine start to current loop
  */
-var Engine = function () {
-    Engine.canvas = null;
-    Engine.algorithm = null;
-    Engine.intervalID = null;
-    Engine.drawDelay = null;
-    Engine.tick = 0;
-    Engine.startTimeStamp = null;
-    Engine.last = 0;
-    Engine.now = 0;
+var Engine = {
+    canvas: null,
+    algorithm: null,
+    intervalID: null,
+    drawDelay: null,
+    tick: 0,
+    startTimeStamp: null,
+    last: 0,
+    now: 0
 };
 
 /**
@@ -51,8 +51,7 @@ Engine.drawFrame = function () {
  * @param {HTML5 Canvas object} canvas - HTML5 Canvas object.
  * @param {int} delay - The number of milliseconds to wait between drawing frames.
  */
-Engine.start = function (canvas, delay) {
-    Engine.canvas = canvas;
+Engine.start = function (delay) {
     Engine.drawDelay = delay;
     Engine.startTimeStamp = Date.now();
     Engine.intervalID = setInterval(Engine.drawFrame, Engine.drawDelay);
@@ -86,8 +85,6 @@ Engine.setDrawDelay = function (delay) {
  * @param {Algorithm} newAlgorithm - The new Algorithm object that will be loaded onto the DOM.
  */
 Engine.loadAlgorithm = function (newAlgorithm) {
-    console.log("algorithm: " + newAlgorithm);
-    
     Engine.algorithm = newAlgorithm;
     Engine.algorithm.load();
 };

@@ -15,7 +15,8 @@ var Animation = function (start, duration, element) {
 
 /**
  * Abstract method that all subclasses need to implement. Defines how the 
- * animation is applied to the object.
+ * animation is applied to the object. Note: It is assumed that this function
+ * will not be called unless the animation has started.
  */
 Animation.prototype.draw = function () {
     throw new Error("Draw not implemented");
@@ -38,20 +39,26 @@ Animation.prototype.startAnimation = function () {
     this.hasStarted = true;
 };
 
+
+Animation.prototype.endAnimation = function () {
+
+};
+
 /**
  * Returns the percent complete of the animation.
  * 
  * @returns {int} progress - decimal from 0 to 1
  */
 Animation.prototype.percentComplete = function () {
-    var progress = (Engine.now - this.start) / this.duration;
-    if (progress > 1) {
+    if (this.duration === 0) {
         return 1;
     }
-    else if (progress < 0) {
+
+    var progress = (Engine.now - this.start) / this.duration;
+    if (progress < 0) {
         return 0;
     }
     else {
-        return progress;
+        return Math.min(1, progress);
     }
 };

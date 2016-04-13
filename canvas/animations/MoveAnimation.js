@@ -52,3 +52,7 @@ MoveAnimation.prototype.startAnimation = function () {
     this.deltaX = this.destination.x - this.startX;
     this.deltaY = this.destination.y - this.startY;
 };
+
+MoveAnimation.prototype.endAnimation = function () {
+    this.element.coordinates = this.destination.clone();
+};

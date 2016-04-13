@@ -39,14 +39,23 @@ AnimationManager.prototype.applyAnimations = function () {
                 animation.startAnimation();
             }
             animation.draw();
-        }
 
-        if (Engine.now >= animation.start + animation.duration) {
-            this.removeAnimation(animation);
+            if (Engine.now >= animation.start + animation.duration) {
+                animation.endAnimation();
+                this.removeAnimation(animation);
+            }
         }
 
         if (!animation.hasStarted) {
             break;
         }
     }
+};
+
+AnimationManager.prototype.isEmpty = function () {
+    return this.animations.isEmpty();
+};
+
+AnimationManager.prototype.get = function (index) {
+    return this.animations.get(index);
 };

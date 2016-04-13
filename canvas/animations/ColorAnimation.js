@@ -57,3 +57,7 @@ ColorAnimation.prototype.startAnimation = function () {
     this.deltaBlue = this.endColor.blue - this.startColor.blue;
     this.deltaOpacity = this.endColor.opacity - this.startColor.opacity;
 };
+
+ColorAnimation.prototype.endAnimation = function () {
+    this.element.color = this.endColor.clone();
+};
