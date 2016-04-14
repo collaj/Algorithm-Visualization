@@ -40,7 +40,7 @@
                             <button id="" class="menu_button">Quick Sort</button>
                         </td>
                         <td>
-                            <button id="" class="menu_button">Bubble Sort</button>
+                            <button id="bubbleSort" class="menu_button">Bubble Sort</button>
                         </td>
                         <td>
                             <button id="" class="menu_button">Heap Sort</button>
@@ -148,6 +148,41 @@
                 </ul>
             </div>
         </div>
+
+
+        <!-- BUBBLE SORT -->
+        <div id="bubbleSort_top">
+            <div id="top_panel_controls">
+                <ul class="horizontal_list">
+                    <li>
+                        <button class="home">HOME</button>
+                    </li>
+                    <li>
+                        <button id="bubbleSort_random">RANDOM</button>
+                    </li>
+                    <li>
+                        <button id="bubbleSort_start">START</button>
+                    </li>
+                    <li>
+                        <button id="bubbleSort_stop">STOP</button>
+                    </li>
+                    <li>
+                        <input class="speed" type="range" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="bubbleSort_bottom">
+            <div id="bottom_panel_controls">
+                <ul class="horizontal_list">
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- END BUBBLE SORT-->
+
+
         <!-- END ALGORITHM CONTROLS -->
 
     </div>
@@ -156,7 +191,6 @@
     <!-- Loading engine, elements, animations, and algorithms  -->
     <script src="core/Engine.js"></script>
     <script src="core/SortedList.js"></script>
-    <script src="core/AlgorithmControl.js"></script>
     <script src="core/DomUtil.js"></script>
 
     <script src="canvas/util/Color.js"></script>
@@ -167,17 +201,20 @@
     <script src="canvas/element/Line.js"></script>
     <script src="canvas/element/Rectangle.js"></script>
     <script src="canvas/element/Circle.js"></script>
+    <script src="canvas/element/BarArray.js"></script>
 
     <script src="canvas/animations/AnimationManager.js"></script>
     <script src="canvas/animations/Animation.js"></script>
     <script src="canvas/animations/ColorAnimation.js"></script>
     <script src="canvas/animations/MoveAnimation.js"></script>
+    <script src="canvas/animations/BarSwapAnimation.js"></script>
 
     <script src="canvas/algorithm/Algorithm.js"></script>
     <script src="canvas/algorithm/TestAlgorithm.js"></script>
     <script src="canvas/algorithm/TestAlgorithm1.js"></script>
     <script src="canvas/algorithm/TestAlgorithm2.js"></script>
-
+    <script src="canvas/algorithm/BubbleSort.js"></script>
+    <script src="core/AlgorithmControl.js"></script>
 
 
 </body>

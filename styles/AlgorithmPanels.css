@@ -27,22 +27,20 @@
 }
 
 /*Panel Items*/
-#test_top, #test1_top, #test2_top {
+#test_top, #test1_top, #test2_top, #bubbleSort_top {
     height: 10%;
     width: 100%;
-    background-color: darkslategray;
+    background-color:#666;
     position: absolute;
     top: 0;
-    background-color:#666;
 }
 
-#test_bottom, #test1_bottom, #test2_bottom {
+#test_bottom, #test1_bottom, #test2_bottom , #bubbleSort_bottom {
     height: 10%;
     width: 100%;
-    background-color: yellow;
+    background-color:#666;
     position: absolute;
     bottom: 0;
-   background-color:#666;
 }
 
 #top_panel_controls {

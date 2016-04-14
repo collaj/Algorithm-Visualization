@@ -22,7 +22,6 @@ DomUtil.clearDom = function () {
     $("section").children().appendTo($("#inactive"));
     $("footer").children().appendTo($("#inactive"));
 
-    console.log("clear dom");
 };
 
 
@@ -40,7 +39,7 @@ DomUtil.loadAlgorithm = function (algorithm) {
 
     //load the bottom panel
     DomUtil.swapIn("footer", "#" + algorithm.name + "_bottom");
-
+    
     //load the canvas 
     var canvas = document.getElementById("canvas");
 
@@ -59,9 +58,6 @@ DomUtil.loadAlgorithm = function (algorithm) {
 
     DomUtil.swapIn("section", "#canvas");
 
-
-    //start the engine
-    Engine.start(canvas, 0);
 
     //load the algorithm into the engine
     Engine.loadAlgorithm(algorithm);

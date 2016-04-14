@@ -31,11 +31,11 @@ input, label {
 }
 
 
-	button:hover, input:hover, label:hover {
-		color: #ffffff;
-		background-color: #444;
-		cursor:pointer;
-	}
+button:hover, input:hover, label:hover {
+	color: #ffffff;
+	background-color: #444;
+	cursor:pointer;
+}
 
 input[type="range"]{
 	margin:0;

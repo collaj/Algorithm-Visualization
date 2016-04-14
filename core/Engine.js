@@ -13,7 +13,7 @@
  * @member {int} now - milliseconds from engine start to current loop
  */
 var Engine = {
-    canvas: null,
+    canvas: document.getElementById("canvas"),
     algorithm: null,
     intervalID: null,
     drawDelay: null,
@@ -30,10 +30,12 @@ var Engine = {
  */
 Engine.drawFrame = function () {
     // keeping track of time
-    Engine.tick++;
-    Engine.last = Engine.now;
-    Engine.now = Date.now() - Engine.startTimeStamp;
-    console.log("The current time is " + Engine.now);
+    if (Engine.algorithm !== null) {
+        Engine.tick++;
+        Engine.last = Engine.now;
+        Engine.now = Date.now() - Engine.startTimeStamp;
+        console.log("The current time is " + Engine.now);
+    }
 
     // clear the canvas
     var ctx = Engine.canvas.getContext("2d");
@@ -89,6 +91,10 @@ Engine.loadAlgorithm = function (newAlgorithm) {
     Engine.algorithm.load();
 };
 
+
+Engine.isRunning = function () {
+    return Engine.intervalID !== null;
+};
 
 /**
  * Function to handle inheritance
