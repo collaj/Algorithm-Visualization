@@ -20,7 +20,10 @@ var Engine = {
     tick: 0,
     startTimeStamp: null,
     last: 0,
-    now: 0
+    now: 0,
+    time: null,
+    lastTime: null,
+    animationSpeedModifier: 1
 };
 
 /**
@@ -29,13 +32,18 @@ var Engine = {
  * the loaded algorithm to draw
  */
 Engine.drawFrame = function () {
+    Engine.intervalID = requestAnimationFrame(Engine.drawFrame);
+
     // keeping track of time
-    if (Engine.algorithm !== null) {
-        Engine.tick++;
-        Engine.last = Engine.now;
-        Engine.now = Date.now() - Engine.startTimeStamp;
-        console.log("The current time is " + Engine.now);
-    }
+    Engine.tick++;
+
+    Engine.lastTime = Engine.time;
+    Engine.time = Date.now();
+
+    Engine.last = Engine.now;
+    //Engine.now = Date.now() - Engine.startTimeStamp;
+    Engine.now += (Engine.time - Engine.lastTime) * Engine.animationSpeedModifier;
+    //console.log("The current time is " + Engine.now);
 
     // clear the canvas
     var ctx = Engine.canvas.getContext("2d");
@@ -55,15 +63,20 @@ Engine.drawFrame = function () {
  */
 Engine.start = function (delay) {
     Engine.drawDelay = delay;
+    Engine.tick = 0;
+    Engine.last = 0;
+    Engine.now = 0;
     Engine.startTimeStamp = Date.now();
-    Engine.intervalID = setInterval(Engine.drawFrame, Engine.drawDelay);
+    Engine.time = Engine.startTimeStamp;
+
+    Engine.intervalID = requestAnimationFrame(Engine.drawFrame);
 };
 
 /**
  * Stops the engine
  */
 Engine.stop = function () {
-    clearInterval(Engine.intervalID);
+    cancelAnimationFrame(Engine.intervalID);
     Engine.intervalID = null;
 };
 
@@ -108,3 +121,45 @@ function extend(parent, child) {
     
     child.prototype.constructor = child;
 }
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+
+// MIT license
+
+(function () {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for (var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame']
+                                   || window[vendors[x] + 'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function (callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function () { callback(currTime + timeToCall); },
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function (id) {
+            clearTimeout(id);
+        };
+}());
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////

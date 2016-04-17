@@ -32,12 +32,13 @@ AnimationManager.prototype.removeAnimation = function (animation) {
  */
 AnimationManager.prototype.applyAnimations = function () {
     for (var i = 0; i < this.animations.length(); i++) {
-        var animation = this.animations.get(i);
+        var animation = this.get(i);
 
         if (Engine.now >= animation.start) {
             if (!animation.hasStarted) {
                 animation.startAnimation();
             }
+
             animation.draw();
 
             if (Engine.now >= animation.start + animation.duration) {
