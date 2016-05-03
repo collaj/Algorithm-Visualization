@@ -12,3 +12,12 @@ var Coordinate2D = function (x, y) {
 Coordinate2D.prototype.clone = function () {
     return new Coordinate2D(this.x, this.y);
 };
+
+Coordinate2D.prototype.equals = function (coordinates) {
+    if (coordinates === undefined) {
+        return false;
+    }
+    else {
+        return this.x === coordinates.x && this.y === coordinates.y;
+    }
+};

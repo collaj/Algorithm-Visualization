@@ -30,10 +30,26 @@ Rectangle.prototype.draw = function (canvas) {
     if (context !== undefined) {
         context.beginPath();
         context.rect(this.coordinates.x, this.coordinates.y, this.width, this.height);
-        context.closePath();
         if (this.fill) {
             context.fill();
         }
+        context.closePath();
         context.stroke();
     }
+};
+
+
+Rectangle.prototype.isInBounds = function (coordinates) {
+    if (coordinates === undefined) {
+        return false;
+    }
+    return coordinates.x >= this.coordinates.x &&
+           coordinates.x <= this.coordinates.x + this.width &&
+           coordinates.y >= this.coordinates.y &&
+           coordinates.y <= this.coordinates.y + this.height;
+};
+
+
+Point.prototype.centerPoint = function () {
+    return new Coordinate2D(this.coordinates.x + (this.width / 2), this.coordinates.y + (this.height / 2));
 };

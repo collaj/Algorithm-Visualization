@@ -51,3 +51,16 @@ Algorithm.prototype.removeObjects = function (...elements) {
         this.elements.splice(x, 1);
     }
 };
+
+
+
+Algorithm.prototype.activateMouse = function () {
+    Mouse.activeAlgorithm = this;
+};
+
+
+Algorithm.prototype.addEdges = function (...edges) {
+    for (var i = 0; i < edges.length; i++) {
+        this.objects.unshift(edges[i]);
+    }
+};

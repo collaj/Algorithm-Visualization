@@ -22,7 +22,7 @@
         <!--Contains buttons to load algorithms on the screen-->
         <div id="algorithm_selector">
             <div id="menu_controls">
-                <h1>Select a Algorithm to Visualize</h1>
+                <h1>Select an Algorithm to Visualize</h1>
                 <table id="menu_selection">
                     <tr>
                         <td>
@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <button id="" class="menu_button">Quick Sort</button>
+                            <button id="mouse" class="menu_button">Mouse Testing</button>
                         </td>
                         <td>
                             <button id="bubbleSort" class="menu_button">Bubble Sort</button>
@@ -186,6 +186,44 @@
         <!-- END BUBBLE SORT-->
 
 
+        <!-- MOUSE TESTING -->
+        <div id="mouse_top">
+            <div id="top_panel_controls">
+                <ul class="horizontal_list">
+                    <li>
+                        <button class="home">HOME</button>
+                    </li>
+                    <li>
+                        <input class="speed" type="range" />
+                    </li>
+                    <li>
+                        <span id="mouseCoor">Mouse Coordinates: </span>
+                    </li>
+                    <li>
+                        <span id="mouseCirBound">Is in Circle Bound: </span>
+                    </li>
+                    <li>
+                        <span id="mousePointBound">Point Bound: </span>
+                    </li>
+                    <li>
+                        <span id="mouseLineBound">Line Bound: </span>
+                    </li>
+                    <li>
+                        <span id="mouseRectBound">Rectangle Bound: </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="mouse_bottom">
+            <div id="bottom_panel_controls">
+                <ul class="horizontal_list"></ul>
+            </div>
+        </div>
+        <!-- END MOUSE TESTING -->
+
+
+
         <!-- END ALGORITHM CONTROLS -->
 
     </div>
@@ -193,6 +231,7 @@
 
     <!-- Loading engine, elements, animations, and algorithms  -->
     <script src="core/Engine.js"></script>
+    <script src="core/Mouse.js"></script>
     <script src="core/SortedList.js"></script>
     <script src="core/DomUtil.js"></script>
 
@@ -205,6 +244,7 @@
     <script src="canvas/element/Rectangle.js"></script>
     <script src="canvas/element/Circle.js"></script>
     <script src="canvas/element/BarArray.js"></script>
+    <script src="canvas/element/Edge.js"></script>
 
     <script src="canvas/animations/AnimationManager.js"></script>
     <script src="canvas/animations/Animation.js"></script>
@@ -217,6 +257,7 @@
     <script src="canvas/algorithm/TestAlgorithm1.js"></script>
     <script src="canvas/algorithm/TestAlgorithm2.js"></script>
     <script src="canvas/algorithm/BubbleSort.js"></script>
+    <script src="canvas/algorithm/MouseTesting.js"></script>
     <script src="core/AlgorithmControl.js"></script>
 
 

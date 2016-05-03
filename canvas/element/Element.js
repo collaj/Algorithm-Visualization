@@ -26,3 +26,11 @@ Element.prototype.draw = function (canvas) {
         return context;
     }
 };
+
+Element.prototype.isInBounds = function (coordinates) {
+    this.coordinates.equals(coordinates);
+};
+
+Element.prototype.centerPoint = function () {
+    throw new Error("Function centerPoint not implemented.");
+};

@@ -37,3 +37,17 @@ Line.prototype.draw = function (canvas) {
         context.stroke();
     }
 };
+
+
+Line.prototype.isInBounds = function (coordinates) {
+    if (coordinates === undefined) {
+        return false;
+    }
+    else {
+        var dist1 = Math.sqrt(Math.pow((this.coordinates.x + this.delta1x) - coordinates.x, 2) + Math.pow((this.coordinates.y + this.delta1y) - coordinates.y, 2));
+        var dist2 = Math.sqrt(Math.pow((this.coordinates.x + this.delta2x) - coordinates.x, 2) + Math.pow((this.coordinates.y + this.delta2y) - coordinates.y, 2));
+        var dist3 = Math.sqrt(Math.pow((this.coordinates.x + this.delta2x) - (this.coordinates.x + this.delta1x), 2) + Math.pow((this.coordinates.y + this.delta2y) - (this.coordinates.y + this.delta1y), 2));
+
+        return Math.floor(dist1 + dist2) == Math.floor(dist3);
+    }
+};

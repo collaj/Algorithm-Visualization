@@ -30,10 +30,10 @@ Circle.prototype.draw = function (canvas) {
 
         var center = this.centerPoint();
         context.arc(center.x, center.y, this.radius, 0, Math.PI * 2);
-        context.closePath();
         if (this.fill) {
             context.fill();
         }
+        context.closePath();
         context.stroke();
     }
 };
@@ -44,4 +44,11 @@ Circle.prototype.draw = function (canvas) {
  */
 Circle.prototype.centerPoint = function () {
     return new Coordinate2D(this.coordinates.x + this.radius, this.coordinates.y + this.radius);
+};
+
+
+Circle.prototype.isInBounds = function (coordinates) {
+    var center = this.centerPoint();
+    var dist = Math.sqrt(Math.pow(coordinates.x - center.x, 2) + Math.pow(coordinates.y - center.y, 2));
+    return dist <= this.radius;
 };
