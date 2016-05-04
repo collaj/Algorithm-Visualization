@@ -3,10 +3,11 @@
  * or an group of drawable objects.
  * @constructor
  */
-var Element = function (coordinates, color, visible) {
+var Element = function (coordinates, color, text, visible) {
     this.visible = (visible !== undefined) ? visible : true;
     this.color = (color !== undefined) ? color : new Color();
     this.coordinates = coordinates;
+    this.text = text;
 };
 
 /**

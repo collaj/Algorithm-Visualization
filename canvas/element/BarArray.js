@@ -1,5 +1,5 @@
 ﻿var BarArray = function (list, coordinates, width, height, color, fill, visible) {
-    Element.call(this, coordinates, color, visible);
+    Element.call(this, coordinates, color, undefined, visible);
 
     this.width = width;
     this.height = height;

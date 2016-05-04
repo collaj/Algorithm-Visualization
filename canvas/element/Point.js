@@ -7,7 +7,7 @@
  * @member {Animations} animations - animations for the point
  */
 var Point = function (coordinates, color, visible) {
-    Element.call(this, coordinates, color, visible);
+    Element.call(this, coordinates, color, undefined, visible);
 
     this.width = 2;
 };

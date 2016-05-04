@@ -11,7 +11,7 @@
 var Line = function (point1, point2, color, visible) {
     var coor = new Coordinate2D(Math.min(point1.x, point2.x),
                                 Math.min(point1.y, point2.y));
-    Element.call(this, coor, color, visible);
+    Element.call(this, coor, color, undefined, visible);
     
     this.delta1x = Math.abs(point1.x - coor.x);
     this.delta1y = Math.abs(point1.y - coor.y);

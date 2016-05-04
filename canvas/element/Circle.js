@@ -8,8 +8,8 @@
  * @member {boolean} fill - is element filled
  * @member {Animations} animations - animations for the Circle
  */
-var Circle = function (coordinates, radius, color, fill, visible) {
-    Element.call(this, coordinates, color, visible);
+var Circle = function (coordinates, radius, color, text, fill, visible) {
+    Element.call(this, coordinates, color, text, visible);
 
     this.radius = radius;
     this.fill = (fill !== undefined) ? fill : true;
@@ -35,6 +35,9 @@ Circle.prototype.draw = function (canvas) {
         }
         context.closePath();
         context.stroke();
+        if (this.text !== undefined) {
+            this.text.draw(context, this.centerPoint());
+        }
     }
 };
 

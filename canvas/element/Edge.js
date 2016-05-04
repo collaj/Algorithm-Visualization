@@ -1,5 +1,5 @@
 ﻿var Edge = function (object1, object2, color, visible) {
-    Element.call(this, undefined, color, visible);
+    Element.call(this, undefined, color, undefined, visible);
 
     this.object1 = object1;
     this.object2 = object2;
