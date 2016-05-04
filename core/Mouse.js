@@ -19,16 +19,6 @@ $("#canvas").mousemove(function (evt) {
     if (Mouse.activeAlgorithm !== null) {
         var mouse = getMousePos(Engine.canvas, evt);
 
-        if (Mouse.isDown && Mouse.movingElement === null) {
-            for (var i = 0; i < Mouse.activeAlgorithm.objects.length; i++) {
-                var element = Mouse.activeAlgorithm.objects[i];
-                if (element.isInBounds(mouse)) {
-                    Mouse.movingElement = element;
-                    break;
-                }
-            }
-        }
-
         if (Mouse.movingElement !== null) {
             var deltaX = mouse.x - Mouse.lastPosition.x;
             var deltaY = mouse.y - Mouse.lastPosition.y;
@@ -44,6 +34,18 @@ $("#canvas").mousedown(function (evt) {
     if (Mouse.activeAlgorithm !== null) {
         Mouse.isDown = true;
         Mouse.lastPosition = getMousePos(Engine.canvas, evt);
+
+        var mouse = getMousePos(Engine.canvas, evt);
+        if (Mouse.movingElement === null) {
+            for (var i = 0; i < Mouse.activeAlgorithm.objects.length; i++) {
+                var element = Mouse.activeAlgorithm.objects[i];
+                if (element.isInBounds(mouse)) {
+                    Mouse.movingElement = element;
+                    break;
+                }
+            }
+        }
+
     }
 });
 
