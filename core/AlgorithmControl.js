@@ -15,12 +15,12 @@ $("#test").click(function () {
 });
 
 
-$("#test1").click(function () {
+$("#bfs").click(function () {
 
 
-    var testAlgorithm = new TestAlgorithm1();
+    var bfs = new BFS();
 
-    DomUtil.loadAlgorithm(testAlgorithm);
+    DomUtil.loadAlgorithm(bfs);
 
     
 
@@ -44,11 +44,21 @@ $("#bubbleSort").click(function () {
 });
 
 
+$("#mouse").click(function () {
+    var mouse = new MouseTest();
+    DomUtil.loadAlgorithm(mouse);
+});
+
+
 /**
 *   Common algorithm panel controls
 */
 $(".home").click(function () {
     console.log("home");
+
+    // reset Mouse
+    Mouse.reset();
+
     Engine.stop();
     DomUtil.clearDom();
     DomUtil.swapIn("section", "#algorithm_selector");

@@ -5,6 +5,7 @@
  */
 var Algorithm = function () {
     this.objects = [];
+    this.edges = [];
     this.animations = new AnimationManager();
 };
 
@@ -15,6 +16,11 @@ var Algorithm = function () {
  */
 Algorithm.prototype.draw = function (canvas) {
     this.animations.applyAnimations();
+
+    for (var i = 0; i < this.edges.length; i++) {
+        var edge = this.edges[i];
+        edge.draw(canvas);
+    }
 
     for (var i = 0; i < this.objects.length; i++) {
         var element = this.objects[i];
@@ -49,5 +55,18 @@ Algorithm.prototype.removeObjects = function (...elements) {
     for (var i = 0; i < elements.length; i++) {
         var x = this.elements.indexOf(element);
         this.elements.splice(x, 1);
+    }
+};
+
+
+
+Algorithm.prototype.activateMouse = function () {
+    Mouse.activeAlgorithm = this;
+};
+
+
+Algorithm.prototype.addEdges = function (...edges) {
+    for (var i = 0; i < edges.length; i++) {
+        this.edges.push(edges[i]);
     }
 };

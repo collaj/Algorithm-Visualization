@@ -77,7 +77,7 @@ $("#bubbleSort_start").click(function () {
     } while (swapped);
 
 
-    Engine.start(5);
+    Engine.start();
 });
 
 $("#bubbleSort_stop").click(function () {

@@ -11,7 +11,7 @@
 var Line = function (point1, point2, color, visible) {
     var coor = new Coordinate2D(Math.min(point1.x, point2.x),
                                 Math.min(point1.y, point2.y));
-    Element.call(this, coor, color, visible);
+    Element.call(this, coor, color, undefined, visible);
     
     this.delta1x = Math.abs(point1.x - coor.x);
     this.delta1y = Math.abs(point1.y - coor.y);
@@ -35,5 +35,19 @@ Line.prototype.draw = function (canvas) {
         context.lineTo(this.coordinates.x + this.delta2x, this.coordinates.y + this.delta2y);
         context.closePath();
         context.stroke();
+    }
+};
+
+
+Line.prototype.isInBounds = function (coordinates) {
+    if (coordinates === undefined) {
+        return false;
+    }
+    else {
+        var dist1 = Math.sqrt(Math.pow((this.coordinates.x + this.delta1x) - coordinates.x, 2) + Math.pow((this.coordinates.y + this.delta1y) - coordinates.y, 2));
+        var dist2 = Math.sqrt(Math.pow((this.coordinates.x + this.delta2x) - coordinates.x, 2) + Math.pow((this.coordinates.y + this.delta2y) - coordinates.y, 2));
+        var dist3 = Math.sqrt(Math.pow((this.coordinates.x + this.delta2x) - (this.coordinates.x + this.delta1x), 2) + Math.pow((this.coordinates.y + this.delta2y) - (this.coordinates.y + this.delta1y), 2));
+
+        return Math.floor(dist1 + dist2) == Math.floor(dist3);
     }
 };

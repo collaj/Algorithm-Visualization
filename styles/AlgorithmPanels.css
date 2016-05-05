@@ -27,7 +27,7 @@
 }
 
 /*Panel Items*/
-#test_top, #test1_top, #test2_top, #bubbleSort_top {
+#test_top, #bfs_top, #test2_top, #bubbleSort_top, #mouse_top {
     height: 10%;
     width: 100%;
     background-color:#666;
@@ -35,7 +35,7 @@
     top: 0;
 }
 
-#test_bottom, #test1_bottom, #test2_bottom , #bubbleSort_bottom {
+#test_bottom, #bfs_bottom, #test2_bottom , #bubbleSort_bottom, #mouse_bottom {
     height: 10%;
     width: 100%;
     background-color:#666;
