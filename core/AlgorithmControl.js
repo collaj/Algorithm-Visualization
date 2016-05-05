@@ -15,12 +15,12 @@ $("#test").click(function () {
 });
 
 
-$("#test1").click(function () {
+$("#bfs").click(function () {
 
 
-    var testAlgorithm = new TestAlgorithm1();
+    var bfs = new BFS();
 
-    DomUtil.loadAlgorithm(testAlgorithm);
+    DomUtil.loadAlgorithm(bfs);
 
     
 

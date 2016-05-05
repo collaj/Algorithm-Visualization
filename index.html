@@ -29,7 +29,7 @@
                             <button id="test" class="menu_button">Depth First Search</button>
                         </td>
                         <td>
-                            <button id="test1" class="menu_button">Breadth First Search</button>
+                            <button id="bfs" class="menu_button">Breadth First Search</button>
                         </td>
                         <td>
                             <button id="test2" class="menu_button">Binary Search</button>
@@ -101,7 +101,7 @@
             </div>                     
         </div>
 
-        <div id="test1_top">
+        <div id="bfs_top">
             <div id="top_panel_controls">
                 <ul class="horizontal_list">
                     <li>
@@ -109,17 +109,27 @@
                     </li>  
                     <li>
                         <p id="fps"></p>
-                    </li>                 
+                    </li>       
+                    <li>
+                        <input class="speed" type="range" />
+                    </li>   
+                    <li>
+                        <input id ="bfs_start_vertex" type="text" />
+                    </li>  
+                    <li>
+                        <button class="start_bfs">Start BFS</button>
+                    </li>          
                 </ul>
             </div>
         </div>
 
-        <div id="test1_bottom">
+        <div id="bfs_bottom">
             <div id="bottom_panel_controls">
                 <ul class="horizontal_list">
                     <li>
                         <button class="test_button-bottom">TEST BOTTOM PANEL BUTTON</button>
                     </li>
+
 
                 </ul>
             </div>
@@ -234,10 +244,15 @@
     <script src="core/Mouse.js"></script>
     <script src="core/SortedList.js"></script>
     <script src="core/DomUtil.js"></script>
+    
 
     <script src="canvas/util/Color.js"></script>
     <script src="canvas/util/Coordinate2D.js"></script>
+
     <script src="canvas/util/Text.js"></script>
+    <script src="canvas/util/Queue.js"></script>
+    <script src="canvas/util/Node.js"></script>
+
 
     <script src="canvas/element/Element.js"></script>
     <script src="canvas/element/Point.js"></script>
@@ -255,7 +270,7 @@
 
     <script src="canvas/algorithm/Algorithm.js"></script>
     <script src="canvas/algorithm/TestAlgorithm.js"></script>
-    <script src="canvas/algorithm/TestAlgorithm1.js"></script>
+    <script src="canvas/algorithm/BFS.js"></script>
     <script src="canvas/algorithm/TestAlgorithm2.js"></script>
     <script src="canvas/algorithm/BubbleSort.js"></script>
     <script src="canvas/algorithm/MouseTesting.js"></script>
